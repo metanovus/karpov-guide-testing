@@ -64,13 +64,13 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
             st.session_state.my_text = ""
 
         def submit():
-            st.session_state.my_text = st.session_state.user_input
-            st.session_state.user_input = ""
+            st.session_state.my_text = st.session_state.widget
+            st.session_state.widget = ""
         
         user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
-            key="user_input",
+            key="widget",
             on_change=submit
         )
         my_text = st.session_state.my_text
