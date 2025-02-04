@@ -37,7 +37,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.messages = []
         st.session_state.memory_size = 0
         st.session_state.context_documents = []
-        st.experimental_rerun()
+        st.rerun()
 
     # Отображение истории сообщений
     for i, message_data in enumerate(st.session_state.messages):
@@ -58,12 +58,17 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
                 seed=i,
             )
 
+    def clear_text():
+        st.session_state.my_text = st.session_state.widget
+        st.session_state.widget = ""
+
     # Поле ввода сообщения
     with st.form(key="chat_form"):
         user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
-            key="user_input"
+            key="user_input",
+            on_change=clear_text
         )
         submitted = st.form_submit_button("Отправить")
 
