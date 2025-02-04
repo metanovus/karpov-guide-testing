@@ -36,11 +36,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
     # Кнопка для очистки чата
     if st.button("Очистить чат"):
-        st.session_state.messages = []
-        st.session_state.memory_size = 0
-        st.session_state.context_documents = []
         st.session_state.user_input = ''
-        st.rerun()
 
     # Отображение истории сообщений
     for i, message_data in enumerate(st.session_state.messages):
@@ -62,22 +58,15 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
             )
 
     # Поле ввода сообщения
-    #with st.form(key="chat_form"):
-    user_input = st.text_input(
+    with st.form(key="chat_form"):
+        user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
             key="user_input"
         )
-        
-    if st.button("Отправить"):
-        user_message = st.session_state.user_input
-        submitted = True
-        st.session_state.user_input = ''
-    else:
-        submitted = False
-        user_message = ''
+        submitted = st.form_submit_button("Отправить")
 
-    if submitted and user_message:
+    if submitted and user_input:
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
 
