@@ -39,7 +39,8 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.messages = []
         st.session_state.memory_size = 0
         st.session_state.context_documents = []
-        st.rerun()
+        st.session_state.user_input = ""  # Очистить введенное сообщение
+        st.experimental_rerun()
 
     # Отображение истории сообщений
     for i, message_data in enumerate(st.session_state.messages):
@@ -94,10 +95,10 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.messages.append({"role": "bot", "text": response})
 
         # Очистим поле ввода после отправки
-        st.session_state.user_input = ""
+        st.session_state.user_input = ""  # Очистить поле ввода
 
-        # Перезагружаем интерфейс
-        st.rerun()
+        # Отобразим сообщение
+        st.write(response)
 
 
 # Запуск Streamlit
