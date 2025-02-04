@@ -88,12 +88,17 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.user_input = ''
 
     # Поле ввода сообщения
-    st.text_input(
+    with st.form(key="chat_form"):
+        user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
             key="user_input",
             on_change=send_message
-    )
+        )
+        
+        if st.form_submit_button("Отправить"):
+            if user_input:
+                send_message()
 
 
 # Запуск Streamlit
