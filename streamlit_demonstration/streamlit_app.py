@@ -36,7 +36,11 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
     # Кнопка для очистки чата
     if st.button("Очистить чат"):
+        st.session_state.messages = []
+        st.session_state.memory_size = 0
+        st.session_state.context_documents = []
         st.session_state.user_input = ''
+        st.rerun()
 
     # Отображение истории сообщений
     for i, message_data in enumerate(st.session_state.messages):
@@ -59,41 +63,40 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
     # Поле ввода сообщения
     with st.form(key="chat_form"):
-        st.text_input(
+        user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
             key="user_input"
         )
-        submitted = st.form_submit_button("Отправить")
-        user_input = st.session_state.user_input
+        
+    if st.button("Отправить сообщение"):
+        st.session_state.user_input = ''
 
-    if submitted and user_input:
-        if "user_input" not in st.session_state:
+        if user_input:
+            # Сохраняем сообщение пользователя
+            st.session_state.messages.append({"role": "user", "text": user_input})
+    
+            # Создаём RAG-подсказку
+            prompt = create_rag_prompt(user_input, top_k=rag_top_k)
+    
+            # Загружаем новую память
+            new_memory = conversation.memory.load_memory_variables({})['history']
+            new_memory_size = len(new_memory)
+    
+            # Проверяем лимит памяти
+            if st.session_state.memory_size + new_memory_size <= max_memory_size:
+                st.session_state.context_documents.append(new_memory)
+                st.session_state.memory_size += new_memory_size
+                response = conversation.predict(input=prompt)
+            else:
+                st.warning("Достигнут предел памяти, дальнейшее накопление прекращено.")
+                response = conversation.predict(input=user_input)
+    
+            # Сохраняем ответ модели
+            st.session_state.messages.append({"role": "bot", "text": response})
+    
+            # Перезагружаем интерфейс, очищая поле ввода
             st.rerun()
-        # Сохраняем сообщение пользователя
-        st.session_state.messages.append({"role": "user", "text": user_input})
-
-        # Создаём RAG-подсказку
-        prompt = create_rag_prompt(user_input, top_k=rag_top_k)
-
-        # Загружаем новую память
-        new_memory = conversation.memory.load_memory_variables({})['history']
-        new_memory_size = len(new_memory)
-
-        # Проверяем лимит памяти
-        if st.session_state.memory_size + new_memory_size <= max_memory_size:
-            st.session_state.context_documents.append(new_memory)
-            st.session_state.memory_size += new_memory_size
-            response = conversation.predict(input=prompt)
-        else:
-            st.warning("Достигнут предел памяти, дальнейшее накопление прекращено.")
-            response = conversation.predict(input=user_input)
-
-        # Сохраняем ответ модели
-        st.session_state.messages.append({"role": "bot", "text": response})
-
-        # Перезагружаем интерфейс, очищая поле ввода
-        st.rerun()
 
 
 # Запуск Streamlit
