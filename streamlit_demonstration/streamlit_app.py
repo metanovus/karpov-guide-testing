@@ -30,7 +30,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.messages = []
 
     # Заголовок
-    st.title("Чат с моделью")
+    st.title("Чат с умным советником - karpov-guide 💬")
 
     # Кнопка для очистки чата
     if st.button("Очистить чат"):
