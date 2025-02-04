@@ -68,9 +68,13 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
             placeholder="Например, какие курсы подходят для аналитиков данных?",
             key="user_input"
         )
-        submitted = st.form_submit_button("Отправить")
+        
+        if st.form_submit_button("Отправить"):
+            user_message = st.session_state.user_input
+            submitted = True
+            st.session_state.user_input = ''
 
-    if submitted and user_input:
+    if submitted and user_message:
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
 
@@ -95,9 +99,6 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
         # Перезагружаем интерфейс, очищая поле ввода
         st.rerun()
-
-    if st.button("Отправить"):
-        st.session_state.user_input = ''
 
 
 # Запуск Streamlit
