@@ -28,6 +28,8 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.context_documents = []
     if "messages" not in st.session_state:
         st.session_state.messages = []
+    if "user_input" not in st.session_state:
+        st.session_state.user_input = ""  # Добавляем переменную для ввода
 
     # Заголовок
     st.title("Чат с моделью")
@@ -63,7 +65,8 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
-            key="user_input"
+            key="user_input",
+            value=st.session_state.user_input  # Значение поля ввода из session_state
         )
         submitted = st.form_submit_button("Отправить")
 
@@ -90,8 +93,10 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         # Сохраняем ответ модели
         st.session_state.messages.append({"role": "bot", "text": response})
 
-        # Перезагружаем интерфейс, очищая поле ввода
+        # Очищаем поле ввода
         st.session_state.user_input = ""
+
+        # Перезагружаем интерфейс
         st.rerun()
 
 
