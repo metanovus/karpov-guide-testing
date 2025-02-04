@@ -62,8 +62,8 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
             )
 
     # Поле ввода сообщения
-    with st.form(key="chat_form"):
-        user_input = st.text_input(
+    #with st.form(key="chat_form"):
+    user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
             key="user_input"
