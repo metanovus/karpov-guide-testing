@@ -5,43 +5,45 @@ from langchain.chains import ConversationChain
 from app.rag_utils import create_rag_prompt
 from streamlit_chat import message
 
+# Добавляем кастомные стили для оформления чата
 st.markdown("""
     <style>
-        h1 {
-            font-family: 'Arial', sans-serif;  /* Устанавливаем шрифт для st.title */
-            color: #333333;  /* Устанавливаем цвет текста */
-            font-size: 36px;  /* Устанавливаем размер шрифта */
-        }
-        /* Общие стили для сообщений */
-        .message {
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 10px;
-            max-width: 80%;
-            line-height: 1.6; /* Уменьшаем высоту строк для компактности */
-            font-size: 16px;  /* Меньший размер шрифта */
+        /* Общий стиль для всего чата */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
         }
 
-        /* Для сообщений пользователя */
+        /* Настройка шрифта для заголовков */
+        h1 {
+            font-family: 'Arial', sans-serif;
+            color: #333333;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        /* Стиль сообщений */
+        .message {
+            border-radius: 15px;
+            padding: 12px;
+            margin-bottom: 10px;
+            max-width: 80%;
+            line-height: 1.6;
+            font-size: 16px;
+            word-wrap: break-word;
+        }
+
+        /* Сообщения пользователя */
         .user_message {
             background-color: #0084FF;
             color: white;
             align-self: flex-end;
-            max-width: 70%;
         }
 
-        /* Для сообщений модели */
+        /* Сообщения бота */
         .bot_message {
             background-color: #E5E5E5;
             color: black;
-            max-width: 70%;
-            word-wrap: break-word; /* Позволяет переносить длинные слова */
-        }
-
-        /* Настройка шрифта */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6; /* Уменьшаем общую высоту строк */
         }
 
         /* Настройка аватарок */
@@ -51,18 +53,26 @@ st.markdown("""
             border-radius: 50%;
         }
 
-        /* Уменьшение отступов между абзацами */
+        /* Кнопки */
+        .stButton > button {
+            background-color: #0084FF;
+            color: white;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* Убираем абзацные отступы */
         p {
             margin-bottom: 5px;
         }
     </style>
     """, unsafe_allow_html=True)
 
-
 # Основная функция общения с моделью
 def start_messaging(rag_top_k=5, max_memory_size=4096):
-    '''Функция для осуществления функционирования чата'''
-    # Настраиваем LLM
+    '''Функция для функционирования чата'''
+    # Настроим LLM
     llm = ChatMistralAI(
         model="mistral-small-latest",
         api_key='Rwfanxaxljkr1MRPcb0L9ogDf0e81zQf',
