@@ -23,7 +23,7 @@ st.markdown("""
         }
 
         /* Стиль сообщений */
-        .message {
+        .сhat .msg {
             border-radius: 15px;
             padding: 12px;
             margin-bottom: 10px;
