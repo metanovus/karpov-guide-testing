@@ -7,22 +7,18 @@ from streamlit_chat import message
 
 st.markdown("""
     <style>
-
-.chat .msg {
-    display: inline-block;
-    background: var(--secondary-bg-color);
-    border: 1px solid transparent;
-    border-radius: 1px;
-    padding: 10px;
-    line-height: 1.8;
-    margin: 0 5px;
-    max-width: 70%;
-    min-height: 1.5rem;
-    /* white-space: pre-line; */
-}
-
-
-    
+    .chat .msg {
+        display: inline-block;
+        background: var(--secondary-bg-color);
+        border: 1px solid transparent;
+        border-radius: 1px;
+        padding: 10px;
+        line-height: 1.65;
+        margin: 0 5px;
+        max-width: 70%;
+        min-height: 1.5rem;
+        white-space: normal;
+    }
     </style>
     """, unsafe_allow_html=True)
 
