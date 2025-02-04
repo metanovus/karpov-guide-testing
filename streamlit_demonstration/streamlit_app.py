@@ -7,11 +7,6 @@ from streamlit_chat import message
 
 st.markdown("""
     <style>
-    .streamlit-expanderHeader {
-        font-size: 24px;
-        font-weight: bold;
-    }
-
     .chat .msg {
         display: inline-block;
         background-color: #f4f4f4;
