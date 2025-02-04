@@ -93,7 +93,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         # Сохраняем ответ модели
         st.session_state.messages.append({"role": "bot", "text": response})
 
-        # Очищаем поле ввода
+        # Очистим поле ввода после отправки
         st.session_state.user_input = ""
 
         # Перезагружаем интерфейс
