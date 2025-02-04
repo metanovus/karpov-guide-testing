@@ -7,13 +7,10 @@ from streamlit_chat import message
 
 st.markdown("""
     <style>
-    .st-emotion-cache-1n76uvr {
-        width: 904px;
-        position: relative;
-        display: flex;
-        flex: 1 1 0%;
-        flex-direction: column;
-        gap: 1rem;
+    .st-emotion-cache-yw8pof {
+        width: 100%;
+        padding: 6rem 1rem 10rem;
+        max-width: 100rem;
     }
         }
     </style>
