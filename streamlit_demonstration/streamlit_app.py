@@ -60,13 +60,6 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
     # Поле ввода сообщения
     with st.form(key="chat_form"):
-        if "my_text" not in st.session_state:
-            st.session_state.my_text = ""
-
-        def submit():
-            st.session_state.my_text = st.session_state.user_input
-            st.session_state.user_input = ""
-    
         st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
@@ -76,6 +69,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         submitted = st.form_submit_button("Отправить")
 
     if submitted and user_input:
+        st.session_state.user_input = " "
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
 
