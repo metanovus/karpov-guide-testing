@@ -70,10 +70,9 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
-            key="user_input",
-            on_change=submit
+            key="user_input"
         )
-        user_input = st.session_state.my_text
+        user_input = st.session_state.user_input
         submitted = st.form_submit_button("Отправить")
 
     if submitted and user_input:
