@@ -7,10 +7,42 @@ from streamlit_chat import message
 
 st.markdown("""
     <style>
-    .streamlit-expanderHeader {
-        font-size: 24px;
-        font-weight: bold;
-    }
+        /* Общие настройки для текста */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.3;  /* Уменьшаем межстрочный интервал */
+        }
+
+        /* Для заголовков */
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: 10px;
+            line-height: 1.2;  /* Уменьшаем межстрочный интервал для заголовков */
+        }
+
+        /* Для абзацев */
+        p {
+            margin-bottom: 5px;  /* Уменьшаем отступы между абзацами */
+            margin-top: 5px;
+            line-height: 1.3;    /* Уменьшаем высоту строк внутри абзаца */
+        }
+
+        /* Стиль для сообщений в чате */
+        .msg {
+            display: inline-block;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        /* Настройка для кнопок */
+        button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            font-size: 16px;
+        }
     </style>
     """, unsafe_allow_html=True)
 
