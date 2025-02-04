@@ -7,17 +7,14 @@ from streamlit_chat import message
 
 st.markdown("""
     <style>
-        /* Настройка шрифта */
-        body {
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* Ровные окошки для сообщений */
+        /* Общие стили для сообщений */
         .message {
             border-radius: 15px;
-            padding: 10px;
+            padding: 15px;
             margin-bottom: 10px;
             max-width: 80%;
+            line-height: 1.6; /* Уменьшаем высоту строк для компактности */
+            font-size: 16px;  /* Меньший размер шрифта */
         }
 
         /* Для сообщений пользователя */
@@ -25,12 +22,21 @@ st.markdown("""
             background-color: #0084FF;
             color: white;
             align-self: flex-end;
+            max-width: 70%;
         }
 
         /* Для сообщений модели */
         .bot_message {
             background-color: #E5E5E5;
             color: black;
+            max-width: 70%;
+            word-wrap: break-word; /* Позволяет переносить длинные слова */
+        }
+
+        /* Настройка шрифта */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6; /* Уменьшаем общую высоту строк */
         }
 
         /* Настройка аватарок */
@@ -38,6 +44,11 @@ st.markdown("""
             width: 40px;
             height: 40px;
             border-radius: 50%;
+        }
+
+        /* Уменьшение отступов между абзацами */
+        p {
+            margin-bottom: 5px;
         }
     </style>
     """, unsafe_allow_html=True)
@@ -70,7 +81,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.user_input = ''
 
     # Заголовок
-    st.title("Чат с моделью")
+    st.title("💬 Чат с karpov-guide 🤖")
 
     # Кнопка для очистки чата
     if st.button("Очистить чат"):
