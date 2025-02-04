@@ -15,7 +15,7 @@ st.markdown("""
         }
 
         /* Настройка шрифта для заголовков */
-        h1 {
+        .st-emotion-cache-1cvow4s {
             font-family: 'Arial', sans-serif;
             color: #333333;
             font-size: 36px;
