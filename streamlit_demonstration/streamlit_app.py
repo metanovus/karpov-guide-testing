@@ -58,6 +58,9 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
                 seed=i,
             )
 
+    if 'user_input' not in st.session_state:
+        st.session_state.user_input = ""
+
     # Поле ввода сообщения
     with st.form(key="chat_form"):
         user_input = st.text_input(
@@ -69,10 +72,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
     if submitted and user_input:
         # Устанавливаем значение для session_state
-        if 'user_input' in st.session_state:
-            st.session_state.user_input = ""  # Очищаем поле ввода
-        else:
-            st.session_state['user_input'] = ""  # Если ключ не существует, добавляем его 
+        st.session_state.user_input = ""  # Очищаем поле ввода
         
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
