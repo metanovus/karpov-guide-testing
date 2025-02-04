@@ -1,3 +1,11 @@
+## Построение RAG-модели с нуля - умный советник онлайн-курсов **karpov-guide**
+
+*Демонстрация готовой модели на Streamlit*: [ссылка на Streamlit Cloud](https://karpov-guide.streamlit.app/)
+
+
+![Image title](https://s7.ezgif.com/tmp/ezgif-78e725f97524d.gif)
+
+
 ## Структура репозитория **karpov-guide-testing**
 
 ```
