@@ -68,8 +68,11 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         submitted = st.form_submit_button("Отправить")
 
     if submitted and user_input:
-        # Очищаем поле от сообщения
-        st.session_state.user_input = "" 
+        # Устанавливаем значение для session_state
+        if 'user_input' in st.session_state:
+            st.session_state.user_input = ""  # Очищаем поле ввода
+        else:
+            st.session_state['user_input'] = ""  # Если ключ не существует, добавляем его 
         
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
