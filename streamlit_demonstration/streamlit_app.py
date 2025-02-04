@@ -73,6 +73,9 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         user_message = st.session_state.user_input
         submitted = True
         st.session_state.user_input = ''
+    else:
+        submitted = False
+        user_message = ''
 
     if submitted and user_message:
         # Сохраняем сообщение пользователя
