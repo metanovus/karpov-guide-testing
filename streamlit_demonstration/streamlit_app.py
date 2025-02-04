@@ -113,4 +113,4 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
 # Запуск Streamlit
 if __name__ == "__main__":
-    start_messaging(rag_top_k=10)
+    start_messaging()
