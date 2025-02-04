@@ -5,69 +5,6 @@ from langchain.chains import ConversationChain
 from app.rag_utils import create_rag_prompt
 from streamlit_chat import message
 
-# Добавляем кастомные стили для оформления чата
-st.markdown("""
-    <style>
-        /* Общий стиль для всего чата */
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-        }
-
-        /* Настройка шрифта для заголовков */
-        .st-emotion-cache-1cvow4s {
-            font-family: 'Arial', sans-serif;
-            color: #333333;
-            font-size: 36px;
-            text-align: center;
-        }
-
-        /* Стиль сообщений */
-        .сhat .msg {
-            border-radius: 15px;
-            padding: 12px;
-            margin-bottom: 10px;
-            max-width: 80%;
-            line-height: 1.6;
-            font-size: 16px;
-            word-wrap: break-word;
-        }
-
-        /* Сообщения пользователя */
-        .user_message {
-            background-color: #0084FF;
-            color: white;
-            align-self: flex-end;
-        }
-
-        /* Сообщения бота */
-        .bot_message {
-            background-color: #E5E5E5;
-            color: black;
-        }
-
-        /* Настройка аватарок */
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-        }
-
-        /* Кнопки */
-        .stButton > button {
-            background-color: #0084FF;
-            color: white;
-            border-radius: 10px;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        /* Убираем абзацные отступы */
-        p {
-            margin-bottom: 5px;
-        }
-    </style>
-    """, unsafe_allow_html=True)
 
 # Основная функция общения с моделью
 def start_messaging(rag_top_k=5, max_memory_size=4096):
