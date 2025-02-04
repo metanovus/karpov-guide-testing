@@ -68,7 +68,8 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         user_input = st.session_state.user_input
 
     if submitted and user_input:
-        st.session_state.user_input = ''
+        if "user_input" not in st.session_state:
+            st.rerun()
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
 
