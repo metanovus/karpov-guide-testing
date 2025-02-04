@@ -7,6 +7,11 @@ from streamlit_chat import message
 
 st.markdown("""
     <style>
+        h1 {
+            font-family: 'Arial', sans-serif;  /* Устанавливаем шрифт для st.title */
+            color: #333333;  /* Устанавливаем цвет текста */
+            font-size: 36px;  /* Устанавливаем размер шрифта */
+        }
         /* Общие стили для сообщений */
         .message {
             border-radius: 15px;
