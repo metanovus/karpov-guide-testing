@@ -89,7 +89,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
     # Поле ввода сообщения
     with st.form(key="chat_form"):
-        user_input = st.text_input(
+        st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
             key="user_input",
@@ -97,7 +97,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         )
         
         if st.form_submit_button("Отправить"):
-            if user_input:
+            if st.session_state.user_input:
                 send_message()
 
 
