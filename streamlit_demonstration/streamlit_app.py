@@ -7,10 +7,10 @@ from streamlit_chat import message
 
 st.markdown("""
     <style>
-    .chat .msg {
+    .css-1v0mbdj .msg {
         display: inline-block;
-        background-color: #f4f4f4;
-        border: 1px solid #ddd;
+        background: var(--secondary-bg-color);
+        border: 1px solid transparent;
         border-radius: 10px;
         padding: 10px;
         line-height: 1.65;
