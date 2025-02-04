@@ -10,7 +10,7 @@ st.markdown("""
     .st-emotion-cache-yw8pof {
         width: 100%;
         padding: 6rem 1rem 10rem;
-        max-width: 100rem;
+        max-width: 50rem;
     }
         }
     </style>
