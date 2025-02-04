@@ -5,6 +5,33 @@ from langchain.chains import ConversationChain
 from app.rag_utils import create_rag_prompt
 from streamlit_chat import message
 
+st.markdown("""
+    <style>
+
+    .chat .msg {
+        display: inline-block;
+        background: var(--secondary-bg-color);
+        border: 1px solid transparent;
+        border-radius: 10px;
+        padding: 5px;
+        line-height: 1.2;
+        margin: 0 5px;
+        max-width: 70%;
+        min-height: 1rem;
+        white-space: pre-line;
+    }
+
+    .chat {
+        display: flex;
+        font-family: "sans-serif";
+        flex-direction: row;
+        height: auto;
+        margin: 0;
+        width: 80%;
+    }
+    
+    </style>
+    """, unsafe_allow_html=True)
 
 # Основная функция общения с моделью
 def start_messaging(rag_top_k=5, max_memory_size=4096):
