@@ -39,6 +39,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.messages = []
         st.session_state.memory_size = 0
         st.session_state.context_documents = []
+        st.session_state.user_input = ''
         st.rerun()
 
     # Отображение истории сообщений
@@ -70,6 +71,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         submitted = st.form_submit_button("Отправить")
 
     if submitted and user_input:
+        st.session_state.user_input = ''
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
 
