@@ -60,16 +60,14 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
 
     # Поле ввода сообщения
     with st.form(key="chat_form"):
-        st.text_input(
+        user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
             key="user_input"
         )
-        user_input = st.session_state.user_input
         submitted = st.form_submit_button("Отправить")
 
-    if submitted:
-        st.session_state.user_input = ""
+    if submitted and user_input:
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
 
@@ -93,6 +91,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.messages.append({"role": "bot", "text": response})
 
         # Перезагружаем интерфейс, очищая поле ввода
+        st.session_state.user_input = ""
         st.rerun()
 
 
