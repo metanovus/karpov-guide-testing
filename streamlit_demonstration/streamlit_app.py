@@ -72,7 +72,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
     if st.button("Отправить сообщение"):
         st.session_state.user_input = ''
 
-        if user_input:
+        '''if user_input:
             # Сохраняем сообщение пользователя
             st.session_state.messages.append({"role": "user", "text": user_input})
     
@@ -96,7 +96,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
             st.session_state.messages.append({"role": "bot", "text": response})
     
             # Перезагружаем интерфейс, очищая поле ввода
-            st.rerun()
+            st.rerun()'''
 
 
 # Запуск Streamlit
