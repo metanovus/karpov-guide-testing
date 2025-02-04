@@ -58,12 +58,12 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
                 seed=i,
             )
 
-        if "my_text" not in st.session_state:
-            st.session_state.my_text = ""
+    if "my_text" not in st.session_state:
+        st.session_state.my_text = ""
 
-        def submit():
-            st.session_state.my_text = st.session_state.user_input
-            st.session_state.user_input = ""
+    def submit():
+        st.session_state.my_text = st.session_state.user_input
+        st.session_state.user_input = ""
 
     # Поле ввода сообщения
     with st.form(key="chat_form"):
