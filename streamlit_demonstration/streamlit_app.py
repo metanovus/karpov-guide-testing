@@ -71,10 +71,9 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         
         if st.form_submit_button("Отправить"):
             user_message = st.session_state.user_input
-            submitted = True
             st.session_state.user_input = ''
 
-    if submitted and user_message:
+    if user_message:
         # Сохраняем сообщение пользователя
         st.session_state.messages.append({"role": "user", "text": user_input})
 
