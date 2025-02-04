@@ -29,7 +29,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
     if "messages" not in st.session_state:
         st.session_state.messages = []
     if "user_input" not in st.session_state:
-        st.session_state.user_input = ""  # Добавляем переменную для ввода
+        st.session_state.user_input = ''
 
     # Заголовок
     st.title("Чат с моделью")
@@ -39,8 +39,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         st.session_state.messages = []
         st.session_state.memory_size = 0
         st.session_state.context_documents = []
-        st.session_state.user_input = ""  # Очистить введенное сообщение
-        st.experimental_rerun()
+        st.rerun()
 
     # Отображение истории сообщений
     for i, message_data in enumerate(st.session_state.messages):
@@ -66,8 +65,7 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         user_input = st.text_input(
             "Введите сообщение",
             placeholder="Например, какие курсы подходят для аналитиков данных?",
-            key="user_input",
-            value=st.session_state.user_input  # Значение поля ввода из session_state
+            key="user_input"
         )
         submitted = st.form_submit_button("Отправить")
 
@@ -94,11 +92,8 @@ def start_messaging(rag_top_k=5, max_memory_size=4096):
         # Сохраняем ответ модели
         st.session_state.messages.append({"role": "bot", "text": response})
 
-        # Очистим поле ввода после отправки
-        st.session_state.user_input = ""  # Очистить поле ввода
-
-        # Отобразим сообщение
-        st.write(response)
+        # Перезагружаем интерфейс, очищая поле ввода
+        st.rerun()
 
 
 # Запуск Streamlit
