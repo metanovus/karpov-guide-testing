@@ -5,16 +5,6 @@ from langchain.chains import ConversationChain
 from app.rag_utils import create_rag_prompt
 from streamlit_chat import message
 
-st.markdown("""
-    <style>
-    .st-emotion-cache-yw8pof {
-        width: 100%;
-        padding: 6rem 1rem 10rem;
-        max-width: 50rem;
-    }
-        }
-    </style>
-    """, unsafe_allow_html=True)
 
 # Основная функция общения с моделью
 def start_messaging(rag_top_k=5, max_memory_size=4096):
