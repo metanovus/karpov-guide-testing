@@ -2,7 +2,7 @@
 
 *Демонстрация готовой модели на Streamlit*: [ссылка на Streamlit Cloud](https://karpov-guide.streamlit.app/)
 
-![Image title](https://i.ibb.co/Mk59B6Dd/ezgif-1c8e4dc464c06.gif)
+![Демонстрация работы чата](https://i.ibb.co/2YKd255x/ezgif-78e725f97524d.gif)
 
 
 ## ⚙️ Структура репозитория **karpov-guide-testing**
