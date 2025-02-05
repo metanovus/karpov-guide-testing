@@ -18,7 +18,7 @@ karpov-guide-testing/               # Основная папка проекта
 ├── LICENSE                         # Лицензия проекта
 ├── Makefile                        # Скрипты сборки
 ├── notebooks
-│   └── karpov-guide-pipeline-full.ipynb  # Ноутбук с полным решением (пайплайном) всего задания
+│   └── karpov-guide-pipeline-full.ipynb  # Ноутбук с полным решением задания
 ├── requirements.txt                 # Зависимости проекта
 └── streamlit_demonstration          # Демонстрация через Streamlit
 ```
